@@ -1,3 +1,11 @@
+<div *ngIf="erreur" class="alert alert-danger" style="text-align: center;">
+	Erreur lors de la création : l'utilisateur existe !
+</div>
+<div *ngIf="creer" class="alert alert-success" style="text-align: center;">
+	Utilisateur creer avec success
+</div>
+
+
 <form (ngSubmit)="onSubmit(f)" #f="ngForm">
 
 	<div class="form-group form-horizontal row" >

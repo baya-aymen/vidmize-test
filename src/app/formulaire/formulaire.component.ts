@@ -14,10 +14,13 @@ import {UtilisateurService} from '../services/utilisateur.service';
 export class FormulaireComponent implements OnInit {
 
 	regions : Region[];
-
+	erreur : boolean;
+	creer : boolean;
   constructor(private regionService : RegionService, private utilisateurService: UtilisateurService) { }
 
   ngOnInit() {
+  	this.erreur = false;
+  	this.creer = false;
   	// récupération de la liste des regions dés la création du component
   	 this.regionService.getRegions().subscribe(
         (response) => {
@@ -33,8 +36,14 @@ export class FormulaireComponent implements OnInit {
   onSubmit(form: NgForm) {
     console.log(form.value);
     let newUser = new Utilisateur(form.value);
-    this.utilisateurService.addUtilisateur(newUser);
-
+    let reponse = this.utilisateurService.addUtilisateur(newUser);
+    if(reponse === 'error'){
+    	this.erreur = true;
+    	this.creer = false;
+    }else{
+    	this.erreur = false;
+    	this.creer = true;
+    }
     
 }
 
