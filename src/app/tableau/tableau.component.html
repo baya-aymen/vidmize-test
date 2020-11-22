@@ -1,1 +1,17 @@
-<p>tableau works!</p>
+
+
+<div style="margin: 20px;" class="container">
+	<div style="margin: 20px;">
+		<button class="btn-xs btn-danger" (click)="onDeleteRow()">Supprimer</button>
+	</div>
+	<ag-grid-angular
+	style="width: 90%; height: 500px;"
+    class="ag-theme-balham"
+    [rowData]="utilisateurs"
+    #agGrid
+    [columnDefs]="columnDefs"
+    rowSelection="single"
+>
+</ag-grid-angular>
+	
+</div>

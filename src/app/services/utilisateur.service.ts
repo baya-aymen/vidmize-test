@@ -15,8 +15,7 @@ export class UtilisateurService {
   fetchDonnees(){
   	if(localStorage.getItem('utilisateurs')){
   	let users = JSON.parse(localStorage.getItem('utilisateurs'));
-    this.utilisateurs = users.map(
-      (item: any) => new Utilisateur(item))
+    this.utilisateurs = users
     .sort((item1:Utilisateur,item2:Utilisateur) => (item1.nom > item2.nom ? 1 : -1));
   	}
     console.log(this.utilisateurs);
@@ -24,15 +23,17 @@ export class UtilisateurService {
   
   getUtilisateurs(){
     this.fetchDonnees();
-  	return this.utilisateurs.sort((item1:Utilisateur,item2:Utilisateur) => (item1.nom > item2.nom ? 1 : -1));
+  	return this.utilisateurs;
   }
 
   addUtilisateur(user){
     this.fetchDonnees();
   	if(this.utilisateurs){
       let item = this.utilisateurs.find(item => (((item.nom === user.nom)&&(item.prenom === user.prenom))||(item.telephone === user.telephone)));
+      
       if(item){ return 'error';}
-       this.utilisateurs.push(user);
+      
+      this.utilisateurs.push(user);
   		
   	}else{
   		this.utilisateurs = [user];
@@ -40,6 +41,14 @@ export class UtilisateurService {
   	localStorage.setItem('utilisateurs',JSON.stringify(this.utilisateurs));
     this.fetchDonnees();
     return 'success';
+  }
+
+  deleteUtilisateur(user){
+    this.utilisateurs.splice(this.utilisateurs.indexOf(user), 1);
+    console.log (this.utilisateurs);
+    localStorage.setItem('utilisateurs',JSON.stringify(this.utilisateurs));
+    this.fetchDonnees();
+
   }
 
  
