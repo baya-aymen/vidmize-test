@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormulaireComponent } from './formulaire/formulaire.component';
 import { RegionService } from './services/regions.service';
+import {UtilisateurService} from './services/utilisateur.service';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { RegionService } from './services/regions.service';
     HttpClientModule
   ],
   providers: [
-    RegionService
+    RegionService,
+    UtilisateurService
   ],
   bootstrap: [AppComponent]
 })

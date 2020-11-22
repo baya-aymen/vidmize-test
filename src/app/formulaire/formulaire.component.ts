@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {Region} from '../models/region.model';
 import {RegionService} from '../services/regions.service';
+import {Utilisateur} from '../models/utilisateur.model';
+import {UtilisateurService} from '../services/utilisateur.service';
 
 
 @Component({
@@ -13,10 +15,10 @@ export class FormulaireComponent implements OnInit {
 
 	regions : Region[];
 
-  constructor(private regionService : RegionService) { }
+  constructor(private regionService : RegionService, private utilisateurService: UtilisateurService) { }
 
   ngOnInit() {
-
+  	// récupération de la liste des regions dés la création du component
   	 this.regionService.getRegions().subscribe(
         (response) => {
           console.log(response);
@@ -27,9 +29,12 @@ export class FormulaireComponent implements OnInit {
         }
       );
   }
-
+// on creer un Utilisateur et on envoie au service
   onSubmit(form: NgForm) {
     console.log(form.value);
+    let newUser = new Utilisateur(form.value);
+    this.utilisateurService.addUtilisateur(newUser);
+
     
 }
 

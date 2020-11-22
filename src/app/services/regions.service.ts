@@ -15,6 +15,7 @@ export class RegionService {
 
 
   getRegions():Observable<Array<Region>>{
+  	// requeter l'api et mapper les la réponse pour creer un array de Regions
   	return this.httpClient
       .get<Region[]>('https://geo.api.gouv.fr/regions')
       .pipe(
