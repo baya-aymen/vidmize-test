@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
+import {Region} from '../models/region.model';
+import {RegionService} from '../services/regions.service';
+
 
 @Component({
   selector: 'app-formulaire',
@@ -8,9 +11,21 @@ import {NgForm} from '@angular/forms';
 })
 export class FormulaireComponent implements OnInit {
 
-  constructor() { }
+	regions : Region[];
+
+  constructor(private regionService : RegionService) { }
 
   ngOnInit() {
+
+  	 this.regionService.getRegions().subscribe(
+        (response) => {
+          console.log(response);
+          this.regions = response;
+        },
+        (error) => {
+          console.log('Erreur ! : ' + error);
+        }
+      );
   }
 
   onSubmit(form: NgForm) {
