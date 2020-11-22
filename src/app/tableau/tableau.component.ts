@@ -35,20 +35,18 @@ export class TableauComponent implements OnInit,OnDestroy  {
 
   onUpdateData(){
   	this.utilisateurs = this.utilisateurService.getUtilisateurs();
-  	//this.agGrid.api.updateRowData();
   }
 
+  // Suppression d'un utilisateur
   onDeleteRow (){	
   	var selectedData = this.agGrid.api.getSelectedRows();
   	if(selectedData[0]){
 	  	this.utilisateurService.deleteUtilisateur(selectedData[0]);
 	  	this.onUpdateData();
-	  	//this.agGrid.api.updateRowData({ remove: selectedData });
   	}
   }
 
-   ngOnDestroy() {
-        
+   ngOnDestroy() {     
         this.subscription.unsubscribe();
     }
 

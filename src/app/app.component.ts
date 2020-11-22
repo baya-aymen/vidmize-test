@@ -7,11 +7,10 @@ import { Observable, Subject } from 'rxjs';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'vidmize-test';
+	// Mise à jour du component tableau lors d'ajout d'un utilisateur
   eventsSubject: Subject<void> = new Subject<void>();
 
   updateTableau(data){
-  	console.log('mise a jour');
   	this.eventsSubject.next();
   }
   

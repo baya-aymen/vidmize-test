@@ -16,6 +16,7 @@ export class FormulaireComponent implements OnInit {
 	regions : Region[];
 	erreur : boolean;
 	creer : boolean;
+	// emetteur de l'event lors du creation d'un nouvel utilisateur
 	@Output()
 	notify:EventEmitter<string> = new EventEmitter<string>();
   constructor(private regionService : RegionService, private utilisateurService: UtilisateurService) { }
@@ -50,7 +51,7 @@ export class FormulaireComponent implements OnInit {
     }
     
 }
-
+// notifier le component parent de l'ajout d'un utilisateur
 notifyParent(){
 	this.notify.emit('update');
 }

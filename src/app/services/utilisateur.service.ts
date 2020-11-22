@@ -12,6 +12,7 @@ export class UtilisateurService {
   constructor() { 
   }
 
+  // récupération des utilisateurs depuis le localStorage et trier selon le nom
   fetchDonnees(){
   	if(localStorage.getItem('utilisateurs')){
   	let users = JSON.parse(localStorage.getItem('utilisateurs'));
@@ -26,6 +27,7 @@ export class UtilisateurService {
   	return this.utilisateurs;
   }
 
+  // ajouter un utilisateur au localStorage
   addUtilisateur(user){
     this.fetchDonnees();
   	if(this.utilisateurs.length > 0){
@@ -42,10 +44,9 @@ export class UtilisateurService {
     this.fetchDonnees();
     return 'success';
   }
-
+  // supprimer un utilisateur du localStorage
   deleteUtilisateur(user){
     this.utilisateurs.splice(this.utilisateurs.indexOf(user), 1);
-    console.log (this.utilisateurs);
     localStorage.setItem('utilisateurs',JSON.stringify(this.utilisateurs));
     this.fetchDonnees();
 
