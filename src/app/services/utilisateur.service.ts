@@ -28,11 +28,11 @@ export class UtilisateurService {
 
   addUtilisateur(user){
     this.fetchDonnees();
-  	if(this.utilisateurs){
+  	if(this.utilisateurs.length > 0){
       let item = this.utilisateurs.find(item => (((item.nom === user.nom)&&(item.prenom === user.prenom))||(item.telephone === user.telephone)));
       
       if(item){ return 'error';}
-      
+
       this.utilisateurs.push(user);
   		
   	}else{

@@ -1,11 +1,11 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div class="container-fluid">
+<div class="container-fluid" style="margin-top: 40px;">
   <div class="row">
     <div class="col-xs-4">
-     <app-formulaire></app-formulaire>
+     <app-formulaire (notify)="updateTableau($event)"></app-formulaire>
     </div>
     <div class="col-xs-8">
-      <app-tableau></app-tableau>
+      <app-tableau [events]="eventsSubject.asObservable()"></app-tableau>
   </div>
 </div>
 

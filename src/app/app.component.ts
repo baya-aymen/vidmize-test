@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'vidmize-test';
+  eventsSubject: Subject<void> = new Subject<void>();
+
+  updateTableau(data){
+  	console.log('mise a jour');
+  	this.eventsSubject.next();
+  }
+  
 }

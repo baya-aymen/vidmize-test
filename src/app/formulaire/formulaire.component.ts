@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,EventEmitter,Output } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {Region} from '../models/region.model';
 import {RegionService} from '../services/regions.service';
@@ -16,6 +16,8 @@ export class FormulaireComponent implements OnInit {
 	regions : Region[];
 	erreur : boolean;
 	creer : boolean;
+	@Output()
+	notify:EventEmitter<string> = new EventEmitter<string>();
   constructor(private regionService : RegionService, private utilisateurService: UtilisateurService) { }
 
   ngOnInit() {
@@ -43,8 +45,14 @@ export class FormulaireComponent implements OnInit {
     }else{
     	this.erreur = false;
     	this.creer = true;
+    	this.notifyParent();
+    	form.reset();
     }
     
+}
+
+notifyParent(){
+	this.notify.emit('update');
 }
 
 }

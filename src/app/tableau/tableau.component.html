@@ -1,11 +1,11 @@
 
 
-<div style="margin: 20px;" class="container">
-	<div style="margin: 20px;">
-		<button class="btn-xs btn-danger" (click)="onDeleteRow()">Supprimer</button>
-	</div>
+<div class="container-fluid">
+	
+		<button class="btn-xs btn-danger" style="margin: 20px;" (click)="onDeleteRow()">Supprimer</button>
+	
 	<ag-grid-angular
-	style="width: 90%; height: 500px;"
+	style=" height: 500px;"
     class="ag-theme-balham"
     [rowData]="utilisateurs"
     #agGrid
