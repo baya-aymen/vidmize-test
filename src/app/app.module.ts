@@ -8,12 +8,14 @@ import { AppComponent } from './app.component';
 import { FormulaireComponent } from './formulaire/formulaire.component';
 import { RegionService } from './services/regions.service';
 import {UtilisateurService} from './services/utilisateur.service';
+import { TableauComponent } from './tableau/tableau.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    FormulaireComponent
+    FormulaireComponent,
+    TableauComponent
   ],
   imports: [
     BrowserModule,
