@@ -1,16 +1,17 @@
-import { ViewChild,Component, OnInit,Input } from '@angular/core';
+import { ViewChild,Component, OnInit,Input,OnDestroy } from '@angular/core';
 import {Utilisateur} from '../models/utilisateur.model';
 import {UtilisateurService} from '../services/utilisateur.service';
 import { AgGridAngular } from "ag-grid-angular";
-import { Subscription } from 'rxjs';
+import { Subscription ,Observable } from 'rxjs';
 
 @Component({
   selector: 'app-tableau',
   templateUrl: './tableau.component.html',
   styleUrls: ['./tableau.component.css']
 })
-export class TableauComponent implements OnInit,OnDestroy  {
-	@ViewChild('agGrid') agGrid: AgGridAngular;
+export class TableauComponent implements OnInit, OnDestroy  {
+
+	@ViewChild('agGrid',{static: true}) agGrid: AgGridAngular;
 
 	private eventsSubscription: Subscription;
 
@@ -47,7 +48,7 @@ export class TableauComponent implements OnInit,OnDestroy  {
   }
 
    ngOnDestroy() {     
-        this.subscription.unsubscribe();
+        this.eventsSubscription.unsubscribe();
     }
 
 
